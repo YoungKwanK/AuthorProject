@@ -2,6 +2,7 @@ package com.beyond.AuthorProject.controller;
 
 import com.beyond.AuthorProject.dto.AuthorCreateDto;
 import com.beyond.AuthorProject.dto.AuthorUpdateRequestDto;
+import com.beyond.AuthorProject.dto.CommonDto;
 import com.beyond.AuthorProject.service.AuthorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,49 +18,29 @@ public class AuthorController {
 
     @PostMapping("/new")
     public ResponseEntity<?> save(@RequestBody AuthorCreateDto authorCreateDto) {
-        try {
-            authorService.save(authorCreateDto);
-            return new ResponseEntity<>("회원가입에 성공했습니다.", HttpStatus.CREATED);
-        }catch (Exception e) {
-            e.printStackTrace();
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
-        }
+        authorService.save(authorCreateDto);
+        return new ResponseEntity<>(new CommonDto("회원가입 성공",HttpStatus.CREATED.value(),"회원가입에 성공했습니다."),HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getById(@PathVariable Long id) {
-        try {
-            return new ResponseEntity<>(authorService.findById(id), HttpStatus.OK);
-        }catch (Exception e) {
-            e.printStackTrace();
-            return new ResponseEntity<>("존재하지 않는 ID입니다", HttpStatus.BAD_REQUEST);
-        }
+        return new ResponseEntity<>(new CommonDto(authorService.findById(id), HttpStatus.OK.value(), "성공"),HttpStatus.OK);
     }
 
     @GetMapping("/list")
     public ResponseEntity<?> getAll() {
-        return new ResponseEntity<>(authorService.findAll(), HttpStatus.OK);
+        return new ResponseEntity<>(new CommonDto(authorService.findAll(), HttpStatus.OK.value(), "회원 전체 조회 성공"),HttpStatus.OK);
     }
 
     @PatchMapping("/update")
     public ResponseEntity<?> update(@RequestBody AuthorUpdateRequestDto authorUpdateRequestDto) {
-        try{
-            authorService.update(authorUpdateRequestDto);
-            return new ResponseEntity<>("업데이트 성공", HttpStatus.OK);
-        }catch (Exception e) {
-            e.printStackTrace();
-            return new ResponseEntity<>("업데이트 실패", HttpStatus.BAD_REQUEST);
-        }
+        authorService.update(authorUpdateRequestDto);
+        return new ResponseEntity<>(new CommonDto("업데이트 성공", HttpStatus.OK.value(), "업데이트 성공"),HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id) {
-        try{
-            authorService.delete(id);
-            return new ResponseEntity<>("회원 정보가 삭제되었습니다.", HttpStatus.OK);
-        }catch (Exception e) {
-            e.printStackTrace();
-            return new ResponseEntity<>("회원 삭제를 실패하였습니다.", HttpStatus.BAD_REQUEST);
-        }
+        authorService.delete(id);
+        return new ResponseEntity<>(new CommonDto("회원 정보가 삭제되었습니다.", HttpStatus.OK.value(), "회원탈퇴 성공"),HttpStatus.OK);
     }
 }
