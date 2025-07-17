@@ -1,11 +1,11 @@
-package com.beyond.AuthorProject.service;
+package com.beyond.AuthorProject.author.service;
 
-import com.beyond.AuthorProject.domain.Author;
-import com.beyond.AuthorProject.dto.AuthorCreateDto;
-import com.beyond.AuthorProject.dto.AuthorListResponseDto;
-import com.beyond.AuthorProject.dto.AuthorReponseDto;
-import com.beyond.AuthorProject.dto.AuthorUpdateRequestDto;
-import com.beyond.AuthorProject.repository.AuthorRepository;
+import com.beyond.AuthorProject.author.dto.AuthorCreateDto;
+import com.beyond.AuthorProject.author.dto.AuthorUpdateRequestDto;
+import com.beyond.AuthorProject.author.repository.AuthorRepository;
+import com.beyond.AuthorProject.author.domain.Author;
+import com.beyond.AuthorProject.author.dto.AuthorListResponseDto;
+import com.beyond.AuthorProject.author.dto.AuthorResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,15 +27,16 @@ public class AuthorService {
     }
 
     @Transactional(readOnly = true)
-    public AuthorReponseDto findById(Long id){
-        return authorRepository.findById(id).orElseThrow().toAuthorReponseDto();
+    public AuthorResponseDto findById(Long id){
+        Author author =  authorRepository.findById(id).orElseThrow();
+        return AuthorResponseDto.fromAuthor(author);
     }
 
     @Transactional(readOnly = true)
     public List<AuthorListResponseDto> findAll(){
         return authorRepository.findAll()
                 .stream()
-                .map(a->a.toAuthorListReponseDto())
+                .map(a->a.toAuthorListResponseDto())
                 .toList();
     }
 

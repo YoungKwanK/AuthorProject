@@ -1,4 +1,4 @@
-package com.beyond.AuthorProject.dto;
+package com.beyond.AuthorProject.author.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

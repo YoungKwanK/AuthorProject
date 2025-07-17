@@ -1,9 +1,9 @@
-package com.beyond.AuthorProject.controller;
+package com.beyond.AuthorProject.author.controller;
 
-import com.beyond.AuthorProject.dto.AuthorCreateDto;
-import com.beyond.AuthorProject.dto.AuthorUpdateRequestDto;
-import com.beyond.AuthorProject.dto.CommonDto;
-import com.beyond.AuthorProject.service.AuthorService;
+import com.beyond.AuthorProject.author.dto.AuthorCreateDto;
+import com.beyond.AuthorProject.author.dto.AuthorUpdateRequestDto;
+import com.beyond.AuthorProject.author.dto.CommonDto;
+import com.beyond.AuthorProject.author.service.AuthorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

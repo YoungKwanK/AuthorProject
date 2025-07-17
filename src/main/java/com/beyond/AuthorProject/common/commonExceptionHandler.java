@@ -1,6 +1,6 @@
 package com.beyond.AuthorProject.common;
 
-import com.beyond.AuthorProject.dto.CommonErrorDto;
+import com.beyond.AuthorProject.author.dto.CommonErrorDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

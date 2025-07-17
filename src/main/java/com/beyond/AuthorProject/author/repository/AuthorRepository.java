@@ -1,6 +1,6 @@
-package com.beyond.AuthorProject.repository;
+package com.beyond.AuthorProject.author.repository;
 
-import com.beyond.AuthorProject.domain.Author;
+import com.beyond.AuthorProject.author.domain.Author;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

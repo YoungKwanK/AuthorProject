@@ -1,6 +1,6 @@
-package com.beyond.AuthorProject.dto;
+package com.beyond.AuthorProject.author.dto;
 
-import com.beyond.AuthorProject.domain.Author;
+import com.beyond.AuthorProject.author.domain.Author;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
